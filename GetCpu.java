@@ -10,7 +10,7 @@ public class GetCpu{
             input.close();
         }
         catch (IOException ex) {
-            Log.e(JasiPatch.TAG, "Unable To Read Prop " + propName, ex);
+            Log.e("Jasi", "Unable To Read Prop " + propName, ex);
             return null;
         }
         finally {
@@ -19,7 +19,7 @@ public class GetCpu{
                     input.close();
                 }
                 catch (IOException e) {
-                    Log.e(JasiPatch.TAG, "Exception While Closing InputStream", e);
+                    Log.e("Jasi", "Exception While Closing InputStream", e);
                 }
             }
         }
