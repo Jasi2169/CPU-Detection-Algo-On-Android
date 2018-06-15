@@ -1,5 +1,32 @@
 public class GetCpu{
 	
+	public static String getSystemProperty(String propName) {
+        String line = null;
+        BufferedReader input = null;
+        try {
+            Process p = Runtime.getRuntime().exec("getprop " + propName);
+            input = new BufferedReader(new InputStreamReader(p.getInputStream()), 1024);
+            line = input.readLine();
+            input.close();
+        }
+        catch (IOException ex) {
+            Log.e(JasiPatch.TAG, "Unable To Read Prop " + propName, ex);
+            return null;
+        }
+        finally {
+            if (input != null) {
+                try {
+                    input.close();
+                }
+                catch (IOException e) {
+                    Log.e(JasiPatch.TAG, "Exception While Closing InputStream", e);
+                }
+            }
+        }
+        return line;
+    }
+	
+	// call this function
 	private String letsgetcpu(){
 
         Log.v("Jasi","Checking CPU Architecture...");
